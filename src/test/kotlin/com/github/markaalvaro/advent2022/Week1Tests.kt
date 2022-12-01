@@ -7,11 +7,11 @@ class Week1Tests {
 
     @Test
     fun `test Day 1 Part One`() {
-        assertEquals(1, day1Part1())
+        assertEquals(71506, calorieCounting1())
     }
 
     @Test
     fun `test Day 1 Part Two`() {
-        assertEquals(1, day1Part2())
+        assertEquals(209603, calorieCounting2())
     }
 }
