@@ -6,12 +6,22 @@ import kotlin.test.assertEquals
 class Week1Tests {
 
     @Test
-    fun `test Day 1 Part One`() {
+    fun `test Calorie Counting Part One`() {
         assertEquals(71506, calorieCounting1())
     }
 
     @Test
-    fun `test Day 1 Part Two`() {
+    fun `test Calorie Counting Part Two`() {
         assertEquals(209603, calorieCounting2())
+    }
+
+    @Test
+    fun `test Rock Paper Scissors Part One`() {
+        assertEquals(13052, rockPaperScissors1())
+    }
+
+    @Test
+    fun `test Rock Paper Scissors Part Two`() {
+        assertEquals(13693, rockPaperScissors2())
     }
 }
