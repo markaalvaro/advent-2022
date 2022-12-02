@@ -2,11 +2,11 @@ package com.github.markaalvaro.advent2022
 
 private const val FILE_NAME = "Day02.txt"
 
-enum class Symbol(val points: Int) {
+enum class Symbol(val points: Int, vararg val tokens: String) {
 
-    ROCK(1),
-    PAPER(2),
-    SCISSORS(3);
+    ROCK(1, "A", "X"),
+    PAPER(2, "B", "Y"),
+    SCISSORS(3, "C", "Z");
 
     val beats: Symbol
             get() = when(this) {
@@ -15,53 +15,35 @@ enum class Symbol(val points: Int) {
                 SCISSORS -> PAPER
             }
 
-    fun play(other: Symbol): Int {
-        return this.points + if (this.beats == other) 6 else if (this == other) 3 else 0
-    }
+    fun play(other: Symbol) = this.points + if (this.beats == other) 6 else if (this == other) 3 else 0
 }
 
-enum class Result(private val points: Int) {
-    LOSE(0), DRAW(3), WIN(6);
+enum class Result(private val points: Int, val token: String) {
+    LOSE(0, "X"), DRAW(3, "Y"), WIN(6, "Z");
 
-    fun forceOutcome(other: Symbol): Int {
-        return this.points + Symbol.values().first {
+    fun forceOutcome(other: Symbol) = this.points + Symbol.values()
+        .first {
             when(this) {
                 LOSE -> other.beats == it
                 DRAW -> other == it
                 WIN -> other.beats != it && other != it
             }
-        }.points
-    }
+        }
+        .points
 }
 
-fun String.toSymbol(): Symbol  {
-    return when(this) {
-        "A", "X" -> Symbol.ROCK
-        "B", "Y" -> Symbol.PAPER
-        "C", "Z" -> Symbol.SCISSORS
-        else -> throw IllegalArgumentException("Unexpect Rock/Paper/Scissors value")
-    }
-}
+fun String.toSymbol() = Symbol.values().single { this in it.tokens }
+fun String.toResult() = Result.values().single { this == it.token }
 
-fun String.toResult(): Result  {
-    return when(this) {
-        "X" -> Result.LOSE
-        "Y" -> Result.DRAW
-        "Z" -> Result.WIN
-        else -> throw IllegalArgumentException("Unexpect Lost/Draw/Win value")
-    }
-}
+fun rockPaperScissors1() = readFile(FILE_NAME)
+    .map { it.split(" ").map { token -> token.toSymbol() } }
+    .sumOf { (them, you) -> you.play(them) }
 
-fun rockPaperScissors1(): Int {
-    return readFile(FILE_NAME) { it.split(" ") }
-        .map { Pair(it[0].toSymbol(), it[1].toSymbol()) }
-        .sumOf { (them, you) -> you.play(them) }
-}
+fun rockPaperScissors2() = readFile(FILE_NAME)
+    .map { it.split(" ") }
+    .map { (them, you) -> Pair(them.toSymbol(), you.toResult()) }
+    .sumOf { (them, you) -> you.forceOutcome(them) }
 
-fun rockPaperScissors2(): Int {
-    return readFile(FILE_NAME) { it.split(" ") }
-        .map { Pair(it[0].toSymbol(), it[1].toResult()) }
-        .sumOf { (them, you) -> you.forceOutcome(them) }}
 
 fun main() {
     println(rockPaperScissors1())
