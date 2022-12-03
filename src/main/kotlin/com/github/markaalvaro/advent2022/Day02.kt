@@ -3,7 +3,6 @@ package com.github.markaalvaro.advent2022
 private const val FILE_NAME = "Day02.txt"
 
 enum class Symbol(val points: Int, vararg val tokens: String) {
-
     ROCK(1, "A", "X"),
     PAPER(2, "B", "Y"),
     SCISSORS(3, "C", "Z");
@@ -15,14 +14,14 @@ enum class Symbol(val points: Int, vararg val tokens: String) {
                 SCISSORS -> PAPER
             }
 
-    fun play(other: Symbol) = this.points + if (this.beats == other) 6 else if (this == other) 3 else 0
+    fun play(other: Symbol) = points + (if (beats == other) Result.WIN else if (this == other) Result.DRAW else Result.LOSE).points
 }
 
-enum class Result(private val points: Int, val token: String) {
+enum class Result(val points: Int, val token: String) {
     LOSE(0, "X"), DRAW(3, "Y"), WIN(6, "Z");
 
-    fun forceOutcome(other: Symbol) = this.points + Symbol.values()
-        .first {
+    fun forceOutcome(other: Symbol) = points + Symbol.values()
+        .single {
             when(this) {
                 LOSE -> other.beats == it
                 DRAW -> other == it
@@ -44,8 +43,5 @@ fun rockPaperScissors2() = readFile(FILE_NAME)
     .map { (them, you) -> Pair(them.toSymbol(), you.toResult()) }
     .sumOf { (them, you) -> you.forceOutcome(them) }
 
-
-fun main() {
-    println(rockPaperScissors1())
-    println(rockPaperScissors2())
-}
+fun main() = listOf(rockPaperScissors1(), rockPaperScissors2())
+    .forEach { println(it) }
