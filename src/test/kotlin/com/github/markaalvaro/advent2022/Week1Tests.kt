@@ -19,9 +19,18 @@ class Week1Tests {
     fun `test Rock Paper Scissors Part One`() {
         assertEquals(13052, rockPaperScissors1())
     }
-
     @Test
     fun `test Rock Paper Scissors Part Two`() {
         assertEquals(13693, rockPaperScissors2())
+    }
+
+    @Test
+    fun `test Rucksack Reorganization Part One`() {
+        assertEquals(8109, rucksackReorganization1())
+    }
+
+    @Test
+    fun `test Rucksack Reorganization Part Two`() {
+        assertEquals(2738, rucksackReorganization2())
     }
 }
