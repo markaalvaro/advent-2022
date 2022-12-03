@@ -7,8 +7,7 @@ fun String.secondHalf() = slice(length/2..lastIndex).toSet()
 fun Char.priority() = code - if (isLowerCase()) 96 else 38
 
 fun rucksackReorganization1(): Int {
-    return readFile(FILE_NAME) { Pair(it.firstHalf(), it.secondHalf()) }
-        .map { (first, second) -> first.intersect(second) }
+    return readFile(FILE_NAME) { it.firstHalf() intersect it.secondHalf() }
         .flatten()
         .sumOf { it.priority() }
 }
@@ -16,7 +15,7 @@ fun rucksackReorganization1(): Int {
 fun rucksackReorganization2(): Int {
     return readFile(FILE_NAME) { it.toSet() }
         .chunked(3)
-        .map { (elf1, elf2, elf3) -> elf1.intersect(elf2).intersect(elf3) }
+        .map { (elf1, elf2, elf3) -> elf1 intersect elf2 intersect elf3 }
         .flatten()
         .sumOf { it.priority() }
 }
