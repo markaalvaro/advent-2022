@@ -16,7 +16,7 @@ fun campCleanup1(): Int {
 
 fun campCleanup2(): Int {
     return readFile(FILE_NAME) { it.split(",").map(::toRange) }
-        .count { (left, right) -> (left intersect right).isNotEmpty() || (right intersect left).isNotEmpty() }
+        .count { (left, right) -> (left intersect right).isNotEmpty() }
 }
 
 fun main() {
