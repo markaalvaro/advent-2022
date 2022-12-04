@@ -33,4 +33,14 @@ class Week1Tests {
     fun `test Rucksack Reorganization Part Two`() {
         assertEquals(2738, rucksackReorganization2())
     }
+
+    @Test
+    fun `test Camp Cleanup Part One`() {
+        assertEquals(498, campCleanup1())
+    }
+
+    @Test
+    fun `test test Camp Cleanup Part Two`() {
+        assertEquals(859, campCleanup2())
+    }
 }
