@@ -40,7 +40,7 @@ fun rockPaperScissors1() = readFile(FILE_NAME)
 
 fun rockPaperScissors2() = readFile(FILE_NAME)
     .map { it.split(" ") }
-    .map { (them, you) -> Pair(them.toSymbol(), you.toResult()) }
+    .map { (them, you) -> them.toSymbol() to you.toResult() }
     .sumOf { (them, you) -> you.forceOutcome(them) }
 
 fun main() = listOf(rockPaperScissors1(), rockPaperScissors2())
