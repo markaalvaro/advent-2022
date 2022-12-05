@@ -10,5 +10,4 @@ If you are interested in trying out Kotlin for AoC this year or even next, check
 2. :star::star: (12/02/2022) [Rock Paper Scissors Solution](src/main/kotlin/com/github/markaalvaro/advent2022/Day02.kt)
 3. :star::star: (12/03/2022) [Rucksack Reorganization Solution](src/main/kotlin/com/github/markaalvaro/advent2022/Day03.kt)
 4. :star::star: (12/04/2022) [Camp Cleanup Solution](src/main/kotlin/com/github/markaalvaro/advent2022/Day04.kt)
-5. \- 
-6. \-
+5. :star::star: (12/05/2022) [Supply Stacks Solution](src/main/kotlin/com/github/markaalvaro/advent2022/Day05.kt)

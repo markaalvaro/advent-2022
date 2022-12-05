@@ -40,7 +40,17 @@ class Week1Tests {
     }
 
     @Test
-    fun `test test Camp Cleanup Part Two`() {
+    fun `test Camp Cleanup Part Two`() {
         assertEquals(859, campCleanup2())
+    }
+
+    @Test
+    fun `test Supply Stacks Part One`() {
+        assertEquals("FWNSHLDNZ", supplyStacks1())
+    }
+
+    @Test
+    fun `test Supply Stacks Part Two`() {
+        assertEquals("RNRGDNFQG", supplyStacks2())
     }
 }

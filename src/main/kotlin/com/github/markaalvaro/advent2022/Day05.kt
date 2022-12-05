@@ -2,36 +2,36 @@ package com.github.markaalvaro.advent2022
 
 private const val FILE_NAME = "Day05.txt"
 
-fun supplyStacks1(): String {
-    val startingPosition = readFile(FILE_NAME, trim=false).takeWhile { it.isNotBlank() }
-        .map { it.chunked(4).map { chunk -> if (chunk.length >= 2) chunk[1] else ' ' } }
+fun supplyStacks1() = supplyStacks(false)
+
+fun supplyStacks2() = supplyStacks(true)
+
+fun supplyStacks(reversed: Boolean): String {
+    val startingPosition = readFile(FILE_NAME, trim = false).takeWhile { it.isNotBlank() }
+        .filter { it.length >= 2 }
+        .map { it.chunked(4).map { chunk -> chunk[1] } }
         .dropLast(1)
 
-    val stacks = mutableListOf<MutableList<Char>>()
+    val stacks = mutableListOf<ArrayDeque<Char>>()
 
-    for (i in 0..startingPosition.last().lastIndex) {
+    for (j in 0..startingPosition.last().lastIndex) {
         stacks.add(ArrayDeque())
-        var j = startingPosition.lastIndex
+        var i = startingPosition.lastIndex
         do {
-            stacks.last().add(startingPosition[j][i])
-            j--
-        } while (j >= 0 && i <= startingPosition[j].lastIndex && startingPosition[j][i] != ' ')
+            stacks.last().add(startingPosition[i][j])
+        } while (--i >= 0 && j <= startingPosition[i].lastIndex && startingPosition[i][j] != ' ')
     }
 
-    readFile(FILE_NAME).dropWhile { it.isNotBlank() }.drop(1)
+    readFile(FILE_NAME).dropWhile { it.isNotBlank() }
+        .drop(1)
         .map { it.split(" ").filter { d -> !d.matches(Regex("[a-z]*")) } }
-        .forEach{ (toMove, from, to) ->
-            repeat(toMove.toInt()) {
-                val inProcess = stacks[from.toInt() - 1].removeLast()
-                stacks[to.toInt() - 1].add(inProcess)
-            }
+        .forEach { (toMove, from, to) ->
+            val buffer = (1..toMove.toInt()).map { stacks[from.toInt() - 1].removeLast() }.toMutableList()
+            if (reversed) buffer.reverse()
+            buffer.forEach { stacks[to.toInt() - 1].add(it) }
         }
 
     return stacks.map { it.removeLast() }.joinToString("")
-}
-
-fun supplyStacks2(): Int {
-    return 0
 }
 
 fun main() {
