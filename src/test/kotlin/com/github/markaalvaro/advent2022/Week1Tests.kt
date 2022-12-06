@@ -53,4 +53,14 @@ class Week1Tests {
     fun `test Supply Stacks Part Two`() {
         assertEquals("RNRGDNFQG", supplyStacks2())
     }
+
+    @Test
+    fun `test Tuning Trouble Part One`() {
+        assertEquals(1582, tuningTrouble1())
+    }
+
+    @Test
+    fun `test Tuning Trouble Part Two`() {
+        assertEquals(3588, tuningTrouble2())
+    }
 }
