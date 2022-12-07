@@ -10,8 +10,7 @@ fun tuningTrouble(window: Int): Int {
     return window + readFile(FILE_NAME)
         .single()
         .windowed(window)
-        .takeWhile { it.toSet().size != window }
-        .count()
+        .indexOfFirst { it.toSet().size == window }
 }
 
 fun main() {

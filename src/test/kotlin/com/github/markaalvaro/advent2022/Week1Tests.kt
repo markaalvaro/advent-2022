@@ -63,4 +63,14 @@ class Week1Tests {
     fun `test Tuning Trouble Part Two`() {
         assertEquals(3588, tuningTrouble2())
     }
+
+    @Test
+    fun `test No Space Left Part One`() {
+        assertEquals(1743217, noSpaceLeft1())
+    }
+
+    @Test
+    fun `test No Space Left Part Two`() {
+        assertEquals(8319096, noSpaceLeft2())
+    }
 }
