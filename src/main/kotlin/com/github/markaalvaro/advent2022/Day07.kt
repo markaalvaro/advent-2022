@@ -7,20 +7,21 @@ data class Folder(val name: String, val parent: Folder?, var size: Int = 0)
 fun noSpaceLeft1(): Int {
     val allFolders = noSpaceLeft()
 
-    return allFolders.filter { it.size <= 100000 }
+    return allFolders
+        .filter { it.size <= 100000 }
         .sumOf { it.size }
 }
 
 fun noSpaceLeft2(): Int {
     val allFolders = noSpaceLeft()
 
-    val root = allFolders[0]
-    val rootSize = root.size
+    val rootSize = allFolders[0].size
 
     val freeSpace = 70000000 - rootSize
     val needToFree = 30000000 - freeSpace
 
-    return allFolders.filter { it.size >= needToFree }
+    return allFolders
+        .filter { it.size >= needToFree }
         .minOf { it.size }
 }
 
@@ -35,10 +36,8 @@ fun noSpaceLeft(): List<Folder> {
                 current = current.parent!!
             }
             else if (it.startsWith("$ cd")) {
-                val name = it.substringAfter("cd ")
-                val newFolder = Folder(name, current)
-                allFolders += newFolder
-                current = newFolder
+                allFolders += Folder(it.substringAfter("cd "), current)
+                current = allFolders.last()
             }
             else {
                 val newFileSize = it.split(" ")[0].toInt()
