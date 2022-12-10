@@ -14,4 +14,21 @@ class Week2Tests {
     fun `test Treetop Tree House Part Two`() {
         assertEquals(440640, treetopTreeHouse2())
     }
+
+    @Test
+    fun `test Cathode Ray Tube Part One`() {
+        assertEquals(11220, cathodeRayTube1())
+    }
+
+    @Test
+    fun `test Cathode Ray Tube Part Two`() {
+        val expected = """
+            ###..####.###...##....##.####.#....#..#.
+            #..#....#.#..#.#..#....#.#....#....#.#..
+            ###....#..#..#.#..#....#.###..#....##...
+            #..#..#...###..####....#.#....#....#.#..
+            #..#.#....#....#..#.#..#.#....#....#.#..
+            ###..####.#....#..#..##..####.####.#..#.""".trimIndent()
+        assertEquals(expected + "\n", cathodeRayTube2())
+    }
 }
