@@ -56,8 +56,8 @@ fun getScore(grid: List<List<Tree>>, row: Int, col: Int): Int {
     var right = (col + 1 .. grid.first().lastIndex).indexOfFirst { grid[row][it].height >= height } + 1
     if (right == 0) right = (col + 1 .. grid.first().lastIndex).count()
 
-    var down = (row+1..grid.lastIndex).indexOfFirst { grid[it][col].height >= height } + 1
-    if (down == 0) down = (row+1..grid.lastIndex).count()
+    var down = (row + 1..grid.lastIndex).indexOfFirst { grid[it][col].height >= height } + 1
+    if (down == 0) down = (row + 1..grid.lastIndex).count()
 
     var up = (row - 1 downTo 0).indexOfFirst { grid[it][col].height >= height } + 1
     if (up == 0) up = (row - 1 downTo 0).count()
@@ -67,5 +67,5 @@ fun getScore(grid: List<List<Tree>>, row: Int, col: Int): Int {
 
 fun main() {
     println(treetopTreeHouse1())
-    println(treetopTreeHouse2()) // 1224000 440640
+    println(treetopTreeHouse2())
 }
