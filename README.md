@@ -13,3 +13,4 @@ If you are interested in trying out Kotlin for AoC this year or even next, check
 5. :star::star: (12/05/2022) [Supply Stacks Solution](src/main/kotlin/com/github/markaalvaro/advent2022/Day05.kt)
 6. :star::star: (12/06/2022) [Tuning Trouble Solution](src/main/kotlin/com/github/markaalvaro/advent2022/Day06.kt)
 7. :star::star: (12/07/2022) [No Space Left Solution](src/main/kotlin/com/github/markaalvaro/advent2022/Day07.kt)
+8. :star::star: (12/08/2022) [Treetop Tree House Solution](src/main/kotlin/com/github/markaalvaro/advent2022/Day08.kt)
